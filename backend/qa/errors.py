@@ -4,7 +4,7 @@ ERRORS = {
     "INVALID_MODEL_OUTPUT": (502, "The model returned an invalid answer. Please try again."),
     "MODEL_UNAVAILABLE": (503, "The model is unavailable. Please try again later."),
     "MISSING_API_KEY": (503, "The selected model provider is missing its API key."),
-    "TIMEOUT": (504, "The model did not respond within 15 seconds. Please try again."),
+    "TIMEOUT": (504, "The model request timed out. Please try again."),
     "NOT_FOUND": (404, "API route not found."),
     "METHOD_NOT_ALLOWED": (405, "Use POST for this endpoint."),
     "INTERNAL_ERROR": (500, "An unexpected server error occurred."),

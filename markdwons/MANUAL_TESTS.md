@@ -190,7 +190,7 @@ Observed result: ___
 
 ### M12 — Timeout handling, if observed
 
-The backend uses a 15-second httpx timeout. An occasional slow NVIDIA request may trigger it; this test is observational, not a reason to change the timeout or simulate it through the outage checkbox. Automated provider tests cover timeout mapping deterministically.
+The backend uses a configurable NVIDIA read timeout (10 seconds in the current example/deployment, 15 when the variable is absent), with five-second connection/write/pool budgets. Slow operations may trigger it. The outage checkbox tests MODEL_UNAVAILABLE rather than TIMEOUT; automated tests cover timeout mapping deterministically.
 
 Expected if triggered: HTTP 504 with JSON `errorType: TIMEOUT`; the UI displays the error and retry message without an answer. The simulation checkbox instead tests `MODEL_UNAVAILABLE`, not TIMEOUT.
 
@@ -245,3 +245,9 @@ The polished interface uses a `Help Center` masthead and `How can we help?` head
 - [ ] Check both system color themes; focus and error states must remain distinguishable.
 
 Polish regression status: the developer reports having performed manual checks. Individual case outcomes have not been recorded, so the checkboxes and result rows remain unfilled. Static screenshot/type/contrast checks are recorded separately in VERIFICATION.md.
+
+## Hosted evidence update
+
+The developer supplied a screenshot of M01 succeeding in the Vercel UI with a NVIDIA badge. The agent additionally checked the three required API behaviors through that deployment’s proxy; see HOSTED_TEST_RESULTS.md. The first supported request timed out and a retry succeeded. This confirms these hosted paths; it does not mark the remaining keyboard, zoom, mobile or outage-checkbox browser checks complete.
+
+Timeout regression: after deploying the updated adapter or restarting Django, confirm `NVIDIA_TIMEOUT_SECONDS=10` is active. Repeat a previously slow question and record the duration/result. If it still times out, inspect the safe phase/elapsed/model log rather than marking the adjustment successful.

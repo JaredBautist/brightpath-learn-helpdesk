@@ -2,6 +2,7 @@ import json
 import os
 from unittest.mock import patch
 from django.test import SimpleTestCase
+from qa.errors import AppError
 
 @patch.dict(os.environ, {"LLM_PROVIDER": "mock", "SIMULATE_FAILURE": "false"})
 class ApiTests(SimpleTestCase):
@@ -57,3 +58,11 @@ class ApiTests(SimpleTestCase):
             self.assertEqual(response.status_code, 200)
             self.assertTrue(response.json()["ok"])
             self.assertEqual(response["X-Content-Type-Options"], "nosniff")
+
+    def test_timeout_response_has_no_answer(self):
+        with patch("qa.views.ask_question", side_effect=AppError("TIMEOUT")):
+            response = self.post("coaching link")
+        self.assertEqual(response.status_code, 504)
+        self.assertEqual(response.json()["errorType"], "TIMEOUT")
+        self.assertNotIn("15 seconds", response.json()["message"])
+        self.assertNotIn("answer", response.json())

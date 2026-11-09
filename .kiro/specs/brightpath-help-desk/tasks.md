@@ -39,3 +39,5 @@ The structure keeps the requested monorepo and small `qa` feature intact. The ex
 - [ ] Document backend-first deployment, private NVIDIA configuration, Vercel redeploy requirements, cold starts and any unverified hosted behavior. Actual publication is outside this preparation step.
 
 Implementation checkboxes indicate code/artifacts delivered, not that environment-blocked acceptance checks passed. NVIDIA required cases now pass outside the sandbox (TEST_RESULTS.md). Broader model quality, full Next build, browser QA and hosted verification remain pending.
+
+Hosted update: Vercel frontend and Render backend are now live. See HOSTED_TEST_RESULTS.md for public proxy checks, the timeout/retry observation and remaining verification limits. The Render blueprint provider was aligned with the activated NVIDIA deployment.

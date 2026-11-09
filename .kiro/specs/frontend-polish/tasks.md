@@ -10,3 +10,5 @@ Status: approved by user; implementation complete. Full application interaction 
 All paths above are relative to frontend except the root-level manual test document and source archive. This refinement does not justify a new unit-test framework for presentation-only changes; use type checking and behavior-focused manual/browser checks.
 
 Task 3 evidence: TypeScript passed; static React rendering passed for initial state and all four saved NVIDIA response states. Text contrast checks passed for 18 foreground/background pairs across light and dark themes. Chromium screenshots were inspected at 1200px light, 375px light and 768px dark with reduced motion. These are static markup snapshots, not a hydrated Next.js session. Production build remains blocked by empty TypeScript subprocess output in the agent environment.
+
+Hosted update: Vercel frontend and Render backend are now live. See HOSTED_TEST_RESULTS.md for public proxy checks, the timeout/retry observation and remaining verification limits. The Render blueprint provider was aligned with the activated NVIDIA deployment.
