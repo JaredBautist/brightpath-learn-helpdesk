@@ -1,0 +1,16 @@
+**/.env
+**/.env.*
+!**/.env.example
+**/.venv/
+**/__pycache__/
+*.py[cod]
+frontend/node_modules/
+frontend/.next/
+frontend/out/
+*.tsbuildinfo
+.vercel/
+brightpath-help-desk.zip
+
+/context.md
+
+/VIDEO_SCRIPT.md
